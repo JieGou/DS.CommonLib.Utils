@@ -2,7 +2,7 @@
 using DS.ClassLib.VarUtils.Basis;
 using DS.ClassLib.VarUtils.Collisions;
 using DS.ClassLib.VarUtils.Enumerables;
-using DS.GraphUtils.Entities;
+//using DS.GraphUtils.Entities;
 using DS.PathFinder.Algorithms.AStar;
 using Rhino.Geometry;
 using Serilog;
@@ -43,7 +43,7 @@ namespace DS.PathFinder
         /// </summary>
         public bool MinNodes { get; set; }
 
-        public ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> EdgeValidator { get; set; }
+        //public ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> EdgeValidator { get; set; }
         public ILogger Logger { get; set; }
 
         /// <inheritdoc/>
@@ -58,7 +58,7 @@ namespace DS.PathFinder
             List<Point3d> minPoints = null;
             try
             {
-                minPoints = MinNodes ? MinimizeNodes(points) : points;
+                minPoints = /*MinNodes ? MinimizeNodes(points) :*/ points;
             }
             catch (System.Exception)
             {
@@ -69,27 +69,27 @@ namespace DS.PathFinder
                 minPoints : points;
         }
 
-        private List<Point3d> MinimizeNodes(List<Point3d> points)
-        {
-            var graph = new SimpleGraph(points);
+        //private List<Point3d> MinimizeNodes(List<Point3d> points)
+        //{
+        //    var graph = new SimpleGraph(points);
 
-            var angles = new List<int>()
-            {
-              (int)_traceSettings.A
-            };
+        //    var angles = new List<int>()
+        //    {
+        //      (int)_traceSettings.A
+        //    };
 
-            var intersectionFactory = new LineIntersectionFactory(angles, new DirectionIteratorBuilder())
-            {
-                EdgeValidator = EdgeValidator
-            };
-            var minizator = new NodesMinimizator(intersectionFactory, _collisionDetector)
-            {
-                MinLinkLength = _traceSettings.F,
-                MaxLinkLength = _maxLinkLength,
-                InitialBasis = _sourceBasis
-            };
+        //    var intersectionFactory = new LineIntersectionFactory(angles, new DirectionIteratorBuilder())
+        //    {
+        //        EdgeValidator = EdgeValidator
+        //    };
+        //    var minizator = new NodesMinimizator(intersectionFactory, _collisionDetector)
+        //    {
+        //        MinLinkLength = _traceSettings.F,
+        //        MaxLinkLength = _maxLinkLength,
+        //        InitialBasis = _sourceBasis
+        //    };
 
-            return minizator.ReduceNodes(graph).Vertices;
-        }
+        //    return minizator.ReduceNodes(graph).Vertices;
+        //}
     }
 }

@@ -10,7 +10,7 @@ namespace ConsoleApp.PathFindTest
     {
         static void Main(string[] args)
         {
-            new InterLinePathFindTest();
+            //new InterLinePathFindTest();
             //new HeuristicEnumeratorTest();
             //new StepEnumeratorTest();
             //FrancoGustavoFloatTest.Run();

@@ -39,9 +39,15 @@ namespace DS.PathFinder.Algorithms.AStar
         /// <summary>
         /// Instansiate an object to build for <see cref="PathNode"/>.
         /// </summary>
-        public NodeBuilder(HeuristicFormula mFormula, Point3d startPoint, Point3d endPoint, double step,
-            List<Vector3d> orths, IPoint3dConverter pointConverter, ITraceSettings traceSettings,
-            bool mCompactPath = false, bool punishChangeDirection = false)
+        public NodeBuilder(HeuristicFormula mFormula,
+                           Point3d startPoint,
+                           Point3d endPoint,
+                           double step,
+                           List<Vector3d> orths,
+                           IPoint3dConverter pointConverter,
+                           ITraceSettings traceSettings,
+                           bool mCompactPath = false,
+                           bool punishChangeDirection = false)
         {
             _mCompactPath = mCompactPath;
             _punishChangeDirection = punishChangeDirection;

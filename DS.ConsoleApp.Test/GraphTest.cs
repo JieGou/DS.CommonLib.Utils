@@ -1,6 +1,6 @@
 ﻿using DS.ClassLib.VarUtils;
 using DS.ClassLib.VarUtils.Collisions;
-using DS.GraphUtils.Entities;
+//using DS.GraphUtils.Entities;
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
@@ -63,56 +63,56 @@ namespace DS.ConsoleApp.Test
             new Point3d(2,0,2),
         };
 
-        public SimpleGraph CreatePlanarGraph90() => new SimpleGraph(_planarNodes90);
-        public SimpleGraph CreatePlanarGraph45() => new SimpleGraph(_planarNodes45);
-        public SimpleGraph CreatePlanarGraphMinus45() => new SimpleGraph(_planarNodesMinus45);
-        public SimpleGraph CreatePlanarGraph30() => new SimpleGraph(_planarNodes30);
+        //public SimpleGraph CreatePlanarGraph90() => new SimpleGraph(_planarNodes90);
+        //public SimpleGraph CreatePlanarGraph45() => new SimpleGraph(_planarNodes45);
+        //public SimpleGraph CreatePlanarGraphMinus45() => new SimpleGraph(_planarNodesMinus45);
+        //public SimpleGraph CreatePlanarGraph30() => new SimpleGraph(_planarNodes30);
 
 
-        public SimpleGraph CreateNotPlanarGraph() => new SimpleGraph(_notPlanarNodes_1);
+        //public SimpleGraph CreateNotPlanarGraph() => new SimpleGraph(_notPlanarNodes_1);
 
-        public SimpleGraph RunNodesTest()
-        {
-            //var nodes = new List<Point3d>()
-            //{
-            //    new Point3d(),
-            //    new Point3d(1,0,0),
-            //    new Point3d(1,1,0),
-            //    new Point3d(2,1,0),
-            //    new Point3d(2,0,0),
-            //    new Point3d(3,0,0),
-            //};
+        //public SimpleGraph RunNodesTest()
+        //{
+        //    //var nodes = new List<Point3d>()
+        //    //{
+        //    //    new Point3d(),
+        //    //    new Point3d(1,0,0),
+        //    //    new Point3d(1,1,0),
+        //    //    new Point3d(2,1,0),
+        //    //    new Point3d(2,0,0),
+        //    //    new Point3d(3,0,0),
+        //    //};
 
-            Random rnd = new Random();
-            var x1 = rnd.NextDouble();
-            var nodes = new List<Point3d>()
-            {
-                new Point3d(),
-                new Point3d(x1,0,0),
-                new Point3d(x1,1,0),
-                new Point3d(2,1,0),
-                new Point3d(2,0,0),
-                new Point3d(3,0,0),
-            };
+        //    Random rnd = new Random();
+        //    var x1 = rnd.NextDouble();
+        //    var nodes = new List<Point3d>()
+        //    {
+        //        new Point3d(),
+        //        new Point3d(x1,0,0),
+        //        new Point3d(x1,1,0),
+        //        new Point3d(2,1,0),
+        //        new Point3d(2,0,0),
+        //        new Point3d(3,0,0),
+        //    };
 
-            var graph = new SimpleGraph(nodes);
-            foreach (var link in graph.Edges)
-            {
-                Console.WriteLine(link.ToString());
-            }
+        //    var graph = new SimpleGraph(nodes);
+        //    foreach (var link in graph.Edges)
+        //    {
+        //        Console.WriteLine(link.ToString());
+        //    }
 
-            return graph;
-        }
+        //    return graph;
+        //}
 
-        public SimpleGraph RunLinksTest(List<Line> links)
-        {
-            var graph = new SimpleGraph(links);
-            foreach (var node in graph.Vertices)
-            {
-                Console.WriteLine(node.ToString());
-            }
-            return graph;
-        }
+        //public SimpleGraph RunLinksTest(List<Line> links)
+        //{
+        //    var graph = new SimpleGraph(links);
+        //    foreach (var node in graph.Vertices)
+        //    {
+        //        Console.WriteLine(node.ToString());
+        //    }
+        //    return graph;
+        //}
 
         //public SimpleGraph MinimizeNodes(SimpleGraph graph)
         //{

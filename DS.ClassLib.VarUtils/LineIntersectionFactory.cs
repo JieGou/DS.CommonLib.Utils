@@ -2,7 +2,7 @@
 using DS.ClassLib.VarUtils.Collisions;
 using DS.ClassLib.VarUtils.Enumerables;
 using DS.ClassLib.VarUtils.Points;
-using DS.GraphUtils.Entities;
+//using DS.GraphUtils.Entities;
 using QuickGraph;
 using Rhino.Geometry;
 using Rhino.Geometry.Intersect;
@@ -55,7 +55,7 @@ namespace DS.ClassLib.VarUtils
         /// <inheritdoc/>
         public List<Plane> LastNodePlanes { get; set; }
 
-        public ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> EdgeValidator { get; set; }
+        //public ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> EdgeValidator { get; set; }
 
 
         /// <inheritdoc/>
@@ -99,8 +99,7 @@ namespace DS.ClassLib.VarUtils
                             var basis1 = _basis.GetBasis(line1.UnitTangent);
                             var basis2 = _basis.GetBasis(line2.UnitTangent);
 
-                            if (_collisionDetector is null && 
-                                checkEdge(EdgeValidator, point1, point2, basis1, basis2, p))
+                            if (_collisionDetector is null /*&& checkEdge(EdgeValidator, point1, point2, basis1, basis2, p)*/)
                             { intersectionPoint = p; s = sum; }
                             else
                             {
@@ -111,9 +110,8 @@ namespace DS.ClassLib.VarUtils
                                     new List<(object, object)>() :
                                     _collisionDetector.GetCollisions(point2, p, basis2, _firstNode, _lastNode, _cTolerance);
 
-                                if (collisions1.Count == 0 && collisions2.Count == 0 && 
-                                    checkEdge(EdgeValidator, point1, point2, basis1, basis2, p))
-                                {intersectionPoint = p; s = sum; }
+                                if (collisions1.Count == 0 && collisions2.Count == 0 /*&& checkEdge(EdgeValidator, point1, point2, basis1, basis2, p)*/)
+                                { intersectionPoint = p; s = sum; }
                             }
                         }
                     }
@@ -122,27 +120,27 @@ namespace DS.ClassLib.VarUtils
 
             return IntersectionPoint = intersectionPoint;
 
-            bool checkEdge(
-                ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> edgeValidator,
-                Point3d point1,
-                Point3d point2,
-                Basis3d basis1,
-                Basis3d basis2,
-                Point3d intersectionPoint)
-            {
-                if (edgeValidator == null) { return true; }
+            //bool checkEdge(
+            //    ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> edgeValidator,
+            //    Point3d point1,
+            //    Point3d point2,
+            //    Basis3d basis1,
+            //    Basis3d basis2,
+            //    Point3d intersectionPoint)
+            //{
+            //    if (edgeValidator == null) { return true; }
 
-                var e1 = createEdge(point1, intersectionPoint, basis1);
-                var e2 = createEdge(point2, intersectionPoint, basis2);
-                return EdgeValidator.IsValid(e1) && EdgeValidator.IsValid(e2);
+            //    var e1 = createEdge(point1, intersectionPoint, basis1);
+            //    var e2 = createEdge(point2, intersectionPoint, basis2);
+            //    return EdgeValidator.IsValid(e1) && EdgeValidator.IsValid(e2);
 
-                TaggedEdge<TaggedGVertex<Point3d>, Basis3d> createEdge(Point3d source, Point3d target, Basis3d basis)
-                {
-                    var v1 = new TaggedGVertex<Point3d>(1, source);
-                    var v2 = new TaggedGVertex<Point3d>(2, target);
-                    return new TaggedEdge<TaggedGVertex<Point3d>, Basis3d>(v1, v2, basis);
-                }
-            }
+            //    TaggedEdge<TaggedGVertex<Point3d>, Basis3d> createEdge(Point3d source, Point3d target, Basis3d basis)
+            //    {
+            //        var v1 = new TaggedGVertex<Point3d>(1, source);
+            //        var v2 = new TaggedGVertex<Point3d>(2, target);
+            //        return new TaggedEdge<TaggedGVertex<Point3d>, Basis3d>(v1, v2, basis);
+            //    }
+            //}
         }
 
         /// <inheritdoc/>

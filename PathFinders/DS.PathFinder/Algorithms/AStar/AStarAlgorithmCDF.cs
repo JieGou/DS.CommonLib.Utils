@@ -3,7 +3,7 @@ using DS.ClassLib.VarUtils.Basis;
 using DS.ClassLib.VarUtils.Collisions;
 using DS.ClassLib.VarUtils.Enumerables;
 using DS.ClassLib.VarUtils.Points;
-using DS.GraphUtils.Entities;
+//using DS.GraphUtils.Entities;
 using QuickGraph;
 using Rhino;
 using Rhino.Geometry;
@@ -140,7 +140,7 @@ namespace DS.PathFinder.Algorithms.AStar
         /// </summary>
         public IDirectionValidator DirectionValidator { get; set; }
 
-        public ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> TaggedEdgeValidator { get;set; }
+        //public ITaggedEdgeValidator<TaggedGVertex<Point3d>, Basis3d> TaggedEdgeValidator { get;set; }
 
         /// <summary>
         /// Specifies if it was failed to exit from startPoint.
@@ -335,16 +335,16 @@ namespace DS.PathFinder.Algorithms.AStar
                 }
             }
 
-            if (TaggedEdgeValidator is not null)
-            {
-                var v1 = new TaggedGVertex<Point3d>(1, parentNode.Point);
-                var v2 = new TaggedGVertex<Point3d>(2, newNode.Point);
-                var edge = new TaggedEdge<TaggedGVertex<Point3d>, Basis3d>(v1, v2, newNode.Basis);
-                if (!TaggedEdgeValidator.IsValid(edge))
-                {
-                    return false;
-                }
-            }
+            //if (TaggedEdgeValidator is not null)
+            //{
+            //    var v1 = new TaggedGVertex<Point3d>(1, parentNode.Point);
+            //    var v2 = new TaggedGVertex<Point3d>(2, newNode.Point);
+            //    var edge = new TaggedEdge<TaggedGVertex<Point3d>, Basis3d>(v1, v2, newNode.Basis);
+            //    if (!TaggedEdgeValidator.IsValid(edge))
+            //    {
+            //        return false;
+            //    }
+            //}
 
             //PointVisualisator?.Show(newNode.Basis);
             //check collisions 
